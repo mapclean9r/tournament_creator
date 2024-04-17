@@ -22,7 +22,7 @@ public class Tournament {
         this.tournamentName = tournamentName;
     }
 
-    public List<Contender> getTeam() {
+    public List<Contender> getTeams() {
         return team;
     }
 

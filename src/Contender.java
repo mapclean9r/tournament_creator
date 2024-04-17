@@ -3,9 +3,10 @@ import java.util.List;
 
 public class Contender {
 
-    private static String name;
-    private static String description;
+    private String name;
+    private String description;
     private final List<Person> teamMembers = new ArrayList<>();
+    private boolean isNotKnockedOut = true;
     public Contender(String teamName){
         name = teamName;
     }
@@ -16,20 +17,30 @@ public class Contender {
 
 
     //Getter, Setter
-    public static String getContenderName() {
+
+
+    public String getName() {
         return name;
     }
 
-    public static void setContenderName(String name) {
-        Contender.name = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public static String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public static void setDescription(String description) {
-        Contender.description = description;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isNotKnockedOut() {
+        return isNotKnockedOut;
+    }
+
+    public void setNotKnockedOut(boolean notKnockedOut) {
+        isNotKnockedOut = notKnockedOut;
     }
 
     public List<Person> getTeamMembers() {
