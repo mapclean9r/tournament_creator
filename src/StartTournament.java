@@ -13,6 +13,7 @@ public class StartTournament {
     public StartTournament(Tournament tournament){
         currentTournament = tournament;
     }
+    private Contender[][] bracket = new Contender[1][teamsLeft];
 
     private void BuildBrackets(){
         allTeams.clear();
@@ -28,6 +29,25 @@ public class StartTournament {
         return r.nextInt(allTeams.size());
     }
 
+    private void CreateVersus(){
+        //fix
+        for (int i = 0; i < 2; i++){
+            for (int k = 0; k < teamsLeft; k++){
+                bracket[k][i] = allTeams.get(i);
+            }
+        }
+        for (int l = 0; l < 2; l++){
+            for (int u = 0; u < teamsLeft; u++){
+                System.out.println(bracket[u][l].getName());
+            }
+        }
+        System.out.println("----");
+        for (int v = 0; v < bracket.length; v++){
+            System.out.println(bracket[v][v].getName());
+        }
+    }
+
+    /*
     private void CreateVersus(){
         vs.clear();
         int randomGen1 = generateNumber();
@@ -47,6 +67,7 @@ public class StartTournament {
             }
         }
     }
+     */
 
     private void knockOut(Contender contender){
         contender.setNotKnockedOut(false);
