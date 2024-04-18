@@ -32,7 +32,7 @@ public class StartTournament {
     private int generateNumber(){
         Random r = new Random();
         int num = r.nextInt(allTeams.size());
-        //kan fjerne forloop senere , kanskje jeg får bruk for den senere
+        //kan fjerne forloop, kanskje jeg får bruk for den senere
         for (int i = 0; i < 1; i++){
             if (vs.size() == 0) {
                 return num;
@@ -53,9 +53,8 @@ public class StartTournament {
             }
         }
         for (int l = 0; l < 2; l++){
-            int round = 0;
-
-            System.out.print("Bracket "+l+": [  ");
+            int round = 1+l;
+            System.out.print("Bracket "+round+": [  ");
             for (int u = 0; u < 2; u++){
                 System.out.print(bracket[l][u].getName() + "  ");
             }
