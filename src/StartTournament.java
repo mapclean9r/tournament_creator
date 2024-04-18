@@ -5,10 +5,10 @@ import java.util.concurrent.TimeUnit;
 
 public class StartTournament {
 
-    private Tournament currentTournament;
+    private final Tournament currentTournament;
     private int teamsLeft = 0;
-    private List<Contender> allTeams = new ArrayList<>();
-    private List<Contender> vs = new ArrayList<>();
+    private final List<Contender> allTeams = new ArrayList<>();
+    private final List<Contender> vs = new ArrayList<>();
     private Contender contenderRoundWinner;
     Contender[][] bracket = new Contender[2][100];
 
