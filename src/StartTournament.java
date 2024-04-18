@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class StartTournament {
@@ -9,7 +10,7 @@ public class StartTournament {
     private int teamsLeft = 0;
     private final List<Contender> allTeams = new ArrayList<>();
     private final List<Contender> vs = new ArrayList<>();
-    private Contender contenderRoundWinner;
+    private Contender contenderWinner;
     Contender[][] bracket = new Contender[1000][2];
 
     public StartTournament(Tournament tournament){
@@ -62,19 +63,38 @@ public class StartTournament {
         }
     }
 
+    private String scanInput(int bracketNr){
+        Contender tmp1 = bracket[bracketNr][0];
+        Contender tmp2 = bracket[bracketNr][1];
+
+        Scanner myObj = new Scanner(System.in);
+
+        System.out.println("1. Select round winner: " + tmp1.getName());
+        System.out.println("2. Select round winner: " + tmp2.getName());
+        System.out.println("3. quit\n");
+
+        return myObj.nextLine();
+    }
+
+    private void boText(int bo){
+        System.out.println("" +
+                "\n-----------------------" +
+                "\n----------BO"+bo+"----------" +
+                "\n-----------------------" +
+                "\n");
+    }
+
     public void Run(int bestOf) throws InterruptedException {
         System.out.println(currentTournament.getTournamentName() + " is about to commence...\n");
         BuildBrackets();
         TimeUnit.SECONDS.sleep(1);
 
+        int bracketNum = 0;
 
         while (teamsLeft != 1){
-            System.out.println();
-            /*
-            for (int i = 0; i < vs.size(); i++){
-                System.out.println(i +" "+ vs.get(i).getName());
-            }
-            */
+            boText(bestOf);
+            System.out.println(scanInput(bracketNum));
+
             teamsLeft = 1;
         }
 
