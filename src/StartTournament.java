@@ -46,7 +46,7 @@ public class StartTournament {
 
     private void CreateVersus(){
         for (int i = 0; i < 2; i++){
-            for (int k = 0; k < 2; k++){
+            for (int k = 0; k < teamsLeft/2; k++){
                 bracket[k][i] = allTeams.get(generateNumber());
                 vs.add(bracket[k][i]);
                 bracket[k][i].setAvailable(false);
@@ -55,42 +55,12 @@ public class StartTournament {
         for (int l = 0; l < 2; l++){
             int round = 1+l;
             System.out.print("Bracket "+round+": [  ");
-            for (int u = 0; u < 2; u++){
+            for (int u = 0; u < teamsLeft/2; u++){
                 System.out.print(bracket[l][u].getName() + "  ");
             }
             System.out.print("]");
             System.out.println("\n");
         }
-    }
-
-    /*
-    private void CreateVersus(){
-        vs.clear();
-        int randomGen1 = generateNumber();
-        while (vs.size() != 2){
-            if (vs.size() == 0){
-                vs.add(allTeams.get(randomGen1));
-            }
-
-            for (Contender i: allTeams) {
-                int randomGEN2 = generateNumber();
-                if (vs.size() == 2){
-                    return;
-                }
-                if (i.isNotKnockedOut() && i != vs.get(0) && randomGen1 != randomGEN2){
-                    vs.add(allTeams.get(randomGEN2));
-                }
-            }
-        }
-    }
-     */
-
-    private void knockOut(Contender contender){
-        contender.setNotKnockedOut(false);
-    }
-
-    private void setContenderRoundWinner(Contender contender){
-        contenderRoundWinner = contender;
     }
 
     public void Run(int bestOf) throws InterruptedException {
