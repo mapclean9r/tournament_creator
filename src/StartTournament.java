@@ -58,8 +58,7 @@ public class StartTournament {
             for (int u = 0; u < teamsLeft/2; u++){
                 System.out.print(bracket[l][u].getName() + "  ");
             }
-            System.out.print("]");
-            System.out.println("\n");
+            System.out.print("]\n");
         }
     }
 
@@ -70,6 +69,7 @@ public class StartTournament {
 
 
         while (teamsLeft != 1){
+            System.out.println();
             for (int i = 0; i < vs.size(); i++){
                 System.out.println(i +" "+ vs.get(i).getName());
             }
