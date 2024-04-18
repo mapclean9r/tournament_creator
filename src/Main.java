@@ -16,13 +16,6 @@ public class Main {
         team3.addTeamMember(bud);
         team4.addTeamMember(man);
 
-        /*
-        for (int i = 0; i < team1.getTeamMembers().size(); i++){
-            System.out.println(team1.getTeamMembers().get(i).getName());
-        }
-        */
-        System.out.println();
-
         Tournament league = new Tournament("Super Duper League");
         league.AddContender(team1);
         league.AddContender(team2);
