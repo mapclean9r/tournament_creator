@@ -7,6 +7,7 @@ public class Contender {
     private String description;
     private final List<Person> teamMembers = new ArrayList<>();
     private boolean isNotKnockedOut = true;
+    private boolean isAvailable = true;
     public Contender(String teamName){
         name = teamName;
     }
@@ -18,6 +19,14 @@ public class Contender {
 
     //Getter, Setter
 
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 
     public String getName() {
         return name;

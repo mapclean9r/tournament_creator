@@ -7,43 +7,58 @@ public class StartTournament {
 
     private Tournament currentTournament;
     private int teamsLeft = 0;
+    private int rc = 0;
     private List<Contender> allTeams = new ArrayList<>();
     private List<Contender> vs = new ArrayList<>();
     private Contender contenderRoundWinner;
+    Contender[][] bracket = new Contender[2][100];
+
     public StartTournament(Tournament tournament){
         currentTournament = tournament;
+        UpdateTeamsData();
     }
-    private Contender[][] bracket = new Contender[1][teamsLeft];
 
     private void BuildBrackets(){
+        CreateVersus();
+    }
+
+    private void UpdateTeamsData(){
         allTeams.clear();
         for (Contender i: currentTournament.getTeams()) {
             teamsLeft++;
             allTeams.add(i);
         }
-            CreateVersus();
     }
 
     private int generateNumber(){
         Random r = new Random();
-        return r.nextInt(allTeams.size());
+        int num = r.nextInt(allTeams.size());
+        for (int i = 0; i <= 1; i++){
+            if (vs.size() == 0) {
+                return num;
+            }
+            if (vs.get(i) != allTeams.get(num) && allTeams.get(num).isAvailable()){
+                return num;
+            }
+        }
+        return generateNumber();
     }
 
     private void CreateVersus(){
-        //fix
         for (int i = 0; i < 2; i++){
-            for (int k = 0; k < teamsLeft; k++){
-                bracket[k][i] = allTeams.get(i);
+            for (int k = 0; k < 2; k++){
+                bracket[k][i] = allTeams.get(generateNumber());
+                vs.add(bracket[k][i]);
+                bracket[k][i].setAvailable(false);
             }
         }
         for (int l = 0; l < 2; l++){
-            for (int u = 0; u < teamsLeft; u++){
-                System.out.println(bracket[u][l].getName());
+            System.out.print("[  ");
+            for (int u = 0; u < 2; u++){
+                System.out.print(bracket[l][u].getName() + "  ");
             }
-        }
-        System.out.println("----");
-        for (int v = 0; v < bracket.length; v++){
-            System.out.println(bracket[v][v].getName());
+            System.out.print("]");
+            System.out.println("\n");
         }
     }
 

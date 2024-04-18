@@ -4,7 +4,7 @@ import java.util.List;
 public class Tournament {
 
     private String tournamentName;
-    private final List<Contender> team = new ArrayList<>();
+    private List<Contender> team = new ArrayList<>();
 
     public Tournament(String name){
         tournamentName = name;
@@ -26,4 +26,7 @@ public class Tournament {
         return team;
     }
 
+    public int getAmountTeams() {
+        return team.size();
+    }
 }
