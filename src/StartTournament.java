@@ -28,7 +28,7 @@ public class StartTournament {
         }
     }
 
-    private int generateNumber(){
+    private int GenerateNumber(){
         Random r = new Random();
         int num = r.nextInt(allTeams.size());
         if (vs.size() == 0) {
@@ -39,13 +39,13 @@ public class StartTournament {
                 return num;
             }
         }
-        return generateNumber();
+        return GenerateNumber();
     }
 
     private void CreateVersus() {
         for (int i = 0; i < teamsLeft/2; i++){
             for (int k = 0; k < 2; k++){
-                bracket[i][k] = allTeams.get(generateNumber());
+                bracket[i][k] = allTeams.get(GenerateNumber());
                 vs.add(bracket[i][k]);
                 bracket[i][k].setAvailable(false);
             }
@@ -67,7 +67,7 @@ public class StartTournament {
         }
     }
 
-    private String scanInput(int bracketNr){
+    private String ScanInput(int bracketNr){
         Contender tmp1 = bracket[bracketNr][0];
         Contender tmp2 = bracket[bracketNr][1];
 
@@ -88,7 +88,7 @@ public class StartTournament {
         return "quit";
     }
 
-    private void boText(int bo){
+    private void BoText(int bo){
         System.out.println("" +
                 "\n-----------------------" +
                 "\n----------BO"+bo+"----------" +
@@ -104,24 +104,19 @@ public class StartTournament {
     }
 
     public void Run(int bestOf) throws InterruptedException {
+        int bracketNum = 0;
+
         System.out.println(currentTournament.getTournamentName() + " is about to commence...\n");
         BuildBrackets();
         TimeUnit.SECONDS.sleep(1);
 
-        int bracketNum = 0;
-
         while (teamsLeft != 1){
-            boText(bestOf);
-            String x = scanInput(bracketNum);
+            BoText(bestOf);
+            String x = ScanInput(bracketNum);
             if (Objects.equals(x, "quit")){
                 return;
             }
-
-
-
-
             teamsLeft = 1;
         }
-
     }
 }
