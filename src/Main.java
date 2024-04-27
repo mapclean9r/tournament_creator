@@ -14,6 +14,10 @@ public class Main {
         Contender team6 = new Contender("team6");
         Contender team7 = new Contender("team7");
         Contender team8 = new Contender("team8");
+        Contender team9 = new Contender("team9");
+        Contender team10 = new Contender("team10");
+        Contender team11 = new Contender("team11");
+        Contender team12 = new Contender("team12");
 
         team1.addTeamMember(karl);
         team2.addTeamMember(igor);
@@ -33,6 +37,10 @@ public class Main {
         league.AddContender(team6);
         league.AddContender(team7);
         league.AddContender(team8);
+        league.AddContender(team9);
+        league.AddContender(team10);
+        league.AddContender(team11);
+        league.AddContender(team12);
 
         StartTournament start = new StartTournament(league);
 

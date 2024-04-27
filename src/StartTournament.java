@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class StartTournament {
@@ -20,6 +17,7 @@ public class StartTournament {
 
     private void BuildBrackets() throws InterruptedException {
         CreateVersus();
+        PrintBracket();
     }
 
     private void UpdateTeamsData(){
@@ -44,7 +42,7 @@ public class StartTournament {
         return generateNumber();
     }
 
-    private void CreateVersus() throws InterruptedException {
+    private void CreateVersus() {
         for (int i = 0; i < teamsLeft/2; i++){
             for (int k = 0; k < 2; k++){
                 bracket[i][k] = allTeams.get(generateNumber());
@@ -52,8 +50,14 @@ public class StartTournament {
                 bracket[i][k].setAvailable(false);
             }
         }
+    }
+
+    private void PrintBracket() throws InterruptedException{
         for (int l = 0; l < teamsLeft/2; l++){
             int round = 1+l;
+            if (l == teamsLeft/2 /2){
+                System.out.println("-------");
+            }
             System.out.print("Bracket "+round+": [  ");
             for (int u = 0; u < 2; u++){
                 System.out.print(bracket[l][u].getName() + "  ");
@@ -73,7 +77,15 @@ public class StartTournament {
         System.out.println("2. Select round winner: " + tmp2.getName());
         System.out.println("3. quit\n");
 
-        return myObj.nextLine();
+        if (Objects.equals(myObj.next(), "1")){
+            System.out.println(tmp1.getName());
+            return tmp1.getName();
+        }
+        if (Objects.equals(myObj.next(), "2")){
+            System.out.println(tmp2.getName());
+            return tmp2.getName();
+        }
+        return "quit";
     }
 
     private void boText(int bo){
@@ -82,6 +94,13 @@ public class StartTournament {
                 "\n----------BO"+bo+"----------" +
                 "\n-----------------------" +
                 "\n");
+    }
+
+    private void Battle(int rounds){
+        while (rounds != 0){
+
+            rounds--;
+        }
     }
 
     public void Run(int bestOf) throws InterruptedException {
@@ -93,7 +112,13 @@ public class StartTournament {
 
         while (teamsLeft != 1){
             boText(bestOf);
-            System.out.println(scanInput(bracketNum));
+            String x = scanInput(bracketNum);
+            if (Objects.equals(x, "quit")){
+                return;
+            }
+
+
+
 
             teamsLeft = 1;
         }
