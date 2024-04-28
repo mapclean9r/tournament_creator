@@ -56,13 +56,14 @@ public class StartTournament {
         for (int l = 0; l < teamsLeft/2; l++){
             int round = 1+l;
             if (l == teamsLeft/2 /2){
-                System.out.println("-------");
+                System.out.println("\n\n----------------------------------------------------------");
             }
-            System.out.print("Bracket "+round+": [  ");
+            System.out.printf("%-5s","\nBracket "+round+": [        ");
             for (int u = 0; u < 2; u++){
-                System.out.print(bracket[l][u].getName() + "  ");
+                System.out.printf("%-15s",bracket[l][u].getName() + "  ");
             }
-            System.out.print("]\n");
+            System.out.printf("%-5s ", "]-------");
+
             TimeUnit.SECONDS.sleep(1);
         }
     }
@@ -90,10 +91,9 @@ public class StartTournament {
 
     private void BoText(int bo){
         System.out.println("" +
-                "\n-----------------------" +
-                "\n----------BO"+bo+"----------" +
-                "\n-----------------------" +
-                "\n");
+                "\n----------------------------------------------------------" +
+                "\n---------------------------BO"+bo+"----------------------------" +
+                "\n----------------------------------------------------------");
     }
 
     private void Battle(int rounds){
@@ -107,15 +107,17 @@ public class StartTournament {
         int bracketNum = 0;
 
         System.out.println(currentTournament.getTournamentName() + " is about to commence...\n");
+        BoText(bestOf);
         BuildBrackets();
+        System.out.println("\n\n----------------------------------------------------------");
         TimeUnit.SECONDS.sleep(1);
 
         while (teamsLeft != 1){
-            BoText(bestOf);
-            String x = ScanInput(bracketNum);
-            if (Objects.equals(x, "quit")){
-                return;
-            }
+
+            //String x = ScanInput(bracketNum);
+            //if (Objects.equals(x, "quit")){
+            //    return;
+            //}
             teamsLeft = 1;
         }
     }

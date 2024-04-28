@@ -1,11 +1,6 @@
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        Person igor = new Person("Igor");
-        Person karl = new Person("Karl");
-        Person bud = new Person("Buddy");
-        Person man = new Person("Man Dude");
-
         Contender team1 = new Contender("The Pepes");
         Contender team2 = new Contender("Big Rock");
         Contender team3 = new Contender("Fell Blocks");
@@ -18,15 +13,10 @@ public class Main {
         Contender team10 = new Contender("team10");
         Contender team11 = new Contender("team11");
         Contender team12 = new Contender("team12");
-
-        team1.addTeamMember(karl);
-        team2.addTeamMember(igor);
-        team3.addTeamMember(bud);
-        team4.addTeamMember(man);
-        team5.addTeamMember(man);
-        team6.addTeamMember(man);
-        team7.addTeamMember(man);
-        team8.addTeamMember(man);
+        Contender team13 = new Contender("team13");
+        Contender team14 = new Contender("team14");
+        Contender team15 = new Contender("team15");
+        Contender team16 = new Contender("team16");
 
         Tournament league = new Tournament("Super Duper League");
         league.AddContender(team1);
@@ -41,6 +31,10 @@ public class Main {
         league.AddContender(team10);
         league.AddContender(team11);
         league.AddContender(team12);
+        league.AddContender(team13);
+        league.AddContender(team14);
+        league.AddContender(team15);
+        league.AddContender(team16);
 
         StartTournament start = new StartTournament(league);
 
